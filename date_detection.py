@@ -2,7 +2,7 @@
 # dateDetection.py — A program that uses regex to determine valid dates based on DD/MM/YYYY format.
 
 """
-This versions will only print valid dates in proper formats.
+Made ready for hub. Needs refactor.
 """
 
 import re, pyperclip
@@ -38,7 +38,7 @@ def dateValidator(userInput):
 
 
 # userInput = input('Enter text here: ')    # manual input argument.
-userInput = str(pyperclip.paste())          # pasteboard input argument using pyperclip module.
+userInput = str(pyperclip.paste())  # pasteboard input argument using pyperclip module.
 # Make a userInput that looks for a file in current working directory and user defined path.
 
 
