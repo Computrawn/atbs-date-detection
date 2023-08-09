@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# dateDetection.py — An exercise in understanding regular expressions.
+# date_detection.py — An exercise in understanding regular expressions.
 # For more information, see README.md.
 
 import re
@@ -24,6 +24,7 @@ Write a function 29/02/1800 that uses regular expressions 29/02/2004 to make sur
 
 
 def main():
+    """Print valid dates to console."""
     matches = create_regex(text_block)
     valid_dates = vali_date(matches)
     print("The following valid dates were found:")
@@ -32,16 +33,19 @@ def main():
 
 
 def create_regex(user_input):
+    """Make regex for DD/MM/YYYY date format and return match object."""
     date_regex = re.compile(r"(\d{2})/(\d{2})/(\d{4})")
     match_obj = date_regex.findall(user_input)
     return match_obj
 
 
 def vali_date(matches):
+    """Unpack match object, validate elements and then return list of valid dates."""
     matching_dates = []
     for index, _ in enumerate(matches):
         day, month, year = matches[index]
         day, month, year = int(day), int(month), int(year)
+        valid_date = f"{day:02}/{month:02}/{year}"
         if month > 12 or day > 31 or year < 1000 or year >= 3000:
             pass
         elif month == 2:
@@ -49,16 +53,16 @@ def vali_date(matches):
                 if year % 100 == 0 and year % 400 != 0:
                     pass
                 else:
-                    matching_dates.append(f"{day:02}/{month:02}/{year}")
+                    matching_dates.append(valid_date)
             elif day > 28:
                 pass
             else:
-                matching_dates.append(f"{day:02}/{month:02}/{year}")
+                matching_dates.append(valid_date)
         elif month == 4 or 6 or 9 or 11 and day > 30:
             if day > 30:
                 pass
             else:
-                matching_dates.append(f"{day:02}/{month:02}/{year}")
+                matching_dates.append(valid_date)
     return matching_dates
 
 
