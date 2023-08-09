@@ -11,10 +11,10 @@ import re, pyperclip
 def dateValidator(userInput):
     dateRegex = re.compile(r"(\d{2})/(\d{2})/(\d{4})", re.DOTALL)
 
-    mo = dateRegex.findall(userInput)
+    match = dateRegex.findall(userInput)
 
-    for date in range(len(mo)):
-        day, month, year = mo[date]
+    for date in match:
+        day, month, year = match[date]
         day = int(day)
         month = int(month)
         year = int(year)
