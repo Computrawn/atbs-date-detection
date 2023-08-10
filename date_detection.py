@@ -38,9 +38,7 @@ def main() -> None:
 def create_regex(text: str) -> list[tuple]:
     """Make regex for DD/MM/YYYY date format and return list of tuples."""
     date_regex = re.compile(r"(\d{2})/(\d{2})/(\d{4})")
-    match_obj = date_regex.findall(text)
-    logging.debug(match_obj)
-    return match_obj
+    return date_regex.findall(text)
 
 
 def vali_date(matches: list[tuple]) -> list[str]:
